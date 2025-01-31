@@ -6,6 +6,7 @@ local SERVERS = {
   'html',
   'cssls',
   'tailwindcss',
+  'gopls',
   -- 'neocmake',
   -- 'svelte',
 }

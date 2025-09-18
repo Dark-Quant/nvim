@@ -8,7 +8,7 @@ global.maplocalleader = "\\"
 
 o.number = true -- Print the line number in front of each line
 o.relativenumber = true -- Show the line number relative to the line with the cursor in front of each line.
-o.clipboard = "unnamedplus" -- uses the clipboard register for all operations except yank.
+o.clipboard = "unnamed,unnamedplus" -- uses the clipboard register for all operations except yank.
 o.syntax = "on" -- When this option is set, the syntax with this name is loaded. o.autoindent = true -- Copy indent from current line when starting a new line.
 o.cursorline = true -- Highlight the screen line of the cursor with CursorLine.
 o.expandtab = true -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
@@ -27,3 +27,4 @@ o.inccommand = "split" -- When nonempty, shows the effects of :substitute, :smag
 o.splitright = true
 o.splitbelow = true -- When on, splitting a window will put the new window below the current one
 o.termguicolors = true
+o.linebreak = true

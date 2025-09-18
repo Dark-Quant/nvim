@@ -1,14 +1,15 @@
 local SERVERS = {
-  'lua_ls',
-  'clangd',
-  'pylsp',
-  'bashls',
-  'html',
-  'cssls',
-  'tailwindcss',
-  'gopls',
-  -- 'neocmake',
-  -- 'svelte',
+    'lua_ls',
+    'clangd',
+    'bashls',
+    'html',
+    'cssls',
+    'tailwindcss',
+    'gopls',
+    'pyright',
+    'texlab'
+    -- 'neocmake',
+    -- 'svelte',
 }
 
 return {
@@ -26,32 +27,32 @@ return {
         -- local protocol = require("vim.lsp.protocol")
 
         local on_attach_wrapper = function(fn)
-          return function(client, bufnr)
-            if client.name == 'ts_ls' then
-              client.server_capabilities.documentFormattingProvider = false
-            end
-            -- Mappings.
-            -- See `:help vim.lsp.*` for documentation on any of the below functions
-            local bufopts = { noremap = true, silent = true, buffer = bufnr }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-            vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-            vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-            vim.keymap.set('n', '<leader>wl', function()
-              print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end, bufopts)
-            vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-            vim.keymap.set('n', '<leader>f', function()
-              vim.lsp.buf.format { async = true }
-            end, bufopts)
+            return function(client, bufnr)
+                if client.name == 'ts_ls' then
+                    client.server_capabilities.documentFormattingProvider = false
+                end
+                -- Mappings.
+                -- See `:help vim.lsp.*` for documentation on any of the below functions
+                local bufopts = { noremap = true, silent = true, buffer = bufnr }
+                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+                vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+                vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+                vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+                vim.keymap.set('n', '<leader>wl', function()
+                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                end, bufopts)
+                vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+                vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+                vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+                vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+                vim.keymap.set('n', '<leader>f', function()
+                    vim.lsp.buf.format { async = true }
+                end, bufopts)
 
-            fn(client, bufnr);
+                fn(client, bufnr);
 
             end
         end
@@ -69,19 +70,19 @@ return {
         }
 
         for _, server in ipairs(lsp_servers) do
-          local has_config, config = pcall(require, 'plugins.lsp.configs.' .. server)
+            local has_config, config = pcall(require, 'plugins.lsp.configs.' .. server)
 
-          if has_config then
-            for k, v in pairs(default) do
-              config[k] = v
+            if has_config then
+                for k, v in pairs(default) do
+                    config[k] = v
+                end
+            else
+                config = default
             end
-          else
-            config = default
-          end
 
-          config.on_attach = on_attach_wrapper(config.on_attach)
+            config.on_attach = on_attach_wrapper(config.on_attach)
 
-          require('lspconfig')[server].setup(config)
+            require('lspconfig')[server].setup(config)
         end
     end,
 }

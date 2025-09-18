@@ -38,7 +38,7 @@ return {
             'void solve() {',
             '\t',
         }),
-        m.i(0),
+        m.i(2),
         m.t({
             '',
             '}',
@@ -52,7 +52,11 @@ return {
             '\tcin.tie(nullptr), cout.tie(nullptr);',
             '\tcout.precision(32);',
             '\tint t = 1;',
-            '\t // cin >> t;',
+            '\t//',
+        }),
+        m.i(1),
+        m.t({
+            'cin >> t;',
             '\twhile (t--) {',
             '\t\tsolve();',
             '\t}',

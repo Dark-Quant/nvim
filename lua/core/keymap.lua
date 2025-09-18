@@ -5,7 +5,8 @@ end
 --[[
 vanilla
 ]]
-
+vim.keymap.set("n", "j", "gj", { noremap = true, silent = true }) 
+vim.keymap.set("n", "k", "gk", { noremap = true, silent = true })
 
 --[[
 Nerd-Tree
@@ -23,3 +24,6 @@ map('n', '<F10>', '<cmd>:lua require("dap").step_over()<cr>')
 map('n', '<F11>', '<cmd>:lua require("dap").step_into()<cr>')
 map('n', '<F12>', '<cmd>:lua require("dap").step_out()<cr>')
 
+-- snippets
+
+map({'i', 's'}, '<C-i>', '<cmd>:lua require("luasnip").jump(1)<cr>')

@@ -6,7 +6,8 @@ return {
 
         g.knap_settings = {
             texoutputext = "pdf",
-            textopdfviewerlaunch = "zathura %outputfile%",
+            textopdf = "pdflatex -interaction=batchmode -halt-on-error -synctex=1 -output-directory=build %docroot%",
+            textopdfviewerlaunch = "zathura build/%outputfile%",
             textopdfviewerrefresh = "pkill -HUP -f 'zathura.*%outputfile%'",
             delay = 10
         }

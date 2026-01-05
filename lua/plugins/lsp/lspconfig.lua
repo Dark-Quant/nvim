@@ -80,9 +80,11 @@ return {
                 config = default
             end
 
-            config.on_attach = on_attach_wrapper(config.on_attach)
+            config.LspAttach = on_attach_wrapper(config.LspAttach)
 
-            require('lspconfig')[server].setup(config)
+            vim.lsp.config(server, config)
+
+            vim.lsp.enable({server})
         end
     end,
 }

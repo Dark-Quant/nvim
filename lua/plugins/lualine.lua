@@ -1,6 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
-    build = "make install_jsregexp",
+    event = "UIEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("lualine").setup()

@@ -1,5 +1,4 @@
 return {
-  -- on_attach = on_attach,
   cmd = { 'gopls', 'serve' },
   filetypes = { 'go', 'go.mod' },
   settings = {

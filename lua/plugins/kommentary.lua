@@ -1,8 +1,10 @@
 return {
-    'b3nj5m1n/kommentary',
-    config = function ()
-        require('kommentary.config').configure_language("default", {
-            prefer_single_line_comments = true,
-        })
-    end
+    'numToStr/Comment.nvim',
+    keys = {
+        { 'gc', mode = { 'n', 'v' }, desc = 'Comment toggle linewise' },
+        { 'gb', mode = { 'n', 'v' }, desc = 'Comment toggle blockwise' },
+    },
+    config = function()
+        require('Comment').setup()
+    end,
 }

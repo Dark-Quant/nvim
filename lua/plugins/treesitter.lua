@@ -17,8 +17,11 @@ return {
             autotag = {
                 enable = true,
             },
-            ensure_installed = {'cpp', 'python', 'lua', 'bash', 'javascript', 'tsx', 'typescript', 'go'},
-            ignore_install = { 'latex' },
+            ensure_installed = {
+                'cpp', 'python', 'lua', 'bash',
+                'javascript', 'tsx', 'typescript', 'go',
+                'latex',
+            },
             rainbow = {
                 enable = true,
                 disable = { "html" },

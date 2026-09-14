@@ -1,19 +1,19 @@
 return {
-    "lervag/vimtex",
-    ft = "tex",
+    'lervag/vimtex',
+    lazy = false,
     config = function()
-        vim.g.vimtex_syntax_enabled = true
-        vim.g.vimtex_indent_enabled = false
-        vim.g.tex_indent_items = false
-        vim.g.tex_indent_brace = false
-        vim.g.vimtex_quickfix_mode = 0
-        vim.g.vimtex_log_ignore = {
-            'Underfull',
-            'Overfull',
-            'specifier changed to',
-            'Token not allowed in a PDF string',
+        vim.g.vimtex_compiler_method = 'latexmk'
+        vim.g.vimtex_compiler_latexmk = {
+            build_dir = 'build',
+            options = {
+                '-xelatex',
+                '-shell-escape',
+                '-file-line-error',
+                '-synctex=1',
+                '-interaction=nonstopmode',
+            },
         }
-        vim.g.vimtex_mappings_enabled = false
-        vim.g.tex_flavor = 'tex'
+        vim.g.vimtex_view_method = 'zathura'
+        vim.g.vimtex_view_automatic = 0
     end,
 }

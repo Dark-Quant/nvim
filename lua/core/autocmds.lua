@@ -12,10 +12,20 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup,
-	desc = "Close某些 filetype with q",
-	pattern = { "qf", "help", "man", "lspinfo", "TelescopePrompt" },
-	callback = function(event)
-		vim.keymap.set("n", "q", "<CMD>close<CR>", { buffer = event.buf, silent = true })
-	end,
+ 	group = augroup,
+ 	desc = "Close certain filetype with q",
+ 	pattern = { "qf", "help", "man", "lspinfo", "TelescopePrompt" },
+ 	callback = function(event)
+    vim.keymap.set("n", "q", "<CMD>close<CR>", { buffer = event.buf, silent = true })
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+ 	group = augroup,
+ 	desc = "Enable spellcheck for LaTeX files",
+ 	pattern = "tex",
+ 	callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { 'en_us', 'ru_ru' }
+  end,
 })

@@ -1,12 +1,16 @@
 return {
     settings = {
         texlab = {
-            build = { onSave = true },
+            build = {
+                onSave = false,
+                executable = 'latexmk',
+                args = { '-pdf', '-synctex=1', '-interaction=nonstopmode' },
+            },
             chktex = {
-                onEdit = false,
-                onOpenAndSave = false,
+                onEdit = true,
+                onOpenAndSave = true,
             },
             diagnosticsDelay = 300,
         },
     },
-})
+}

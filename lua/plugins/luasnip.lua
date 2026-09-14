@@ -8,6 +8,7 @@ return {
         require('luasnip').config.set_config({
             updateevents = "TextChanged,TextChangedI",
             enable_autosnippets = true,
+            history = true,
         })
         require('plugins.snippets.load')
     end,
